@@ -9,7 +9,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prepare": "husky install",
-    "test": "next lint --fix"
+    "test": "next lint --fix && stylelint **/*.css"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.13",
@@ -36,6 +36,8 @@
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
+    "stylelint": "^14.14.0",
+    "stylelint-config-standard": "^29.0.0",
     "tailwindcss": "^3.1.8",
     "typescript": "4.8.4"
   }

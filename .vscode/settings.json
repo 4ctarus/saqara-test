@@ -1,11 +1,15 @@
 {
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true,
-      "source.organizeImports": true
-    },
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2,
-    "eslint.alwaysShowStatus": true,
-    "files.autoSave": "onFocusChange",
-    "files.eol": "\n"
-  }
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "eslint.alwaysShowStatus": true,
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "css.format.enable": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
+}

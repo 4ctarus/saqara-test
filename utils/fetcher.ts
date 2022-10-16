@@ -4,7 +4,6 @@ import { QueryFunctionContext } from '@tanstack/react-query';
 export async function fetcher<T>(
   context: QueryFunctionContext<string[], T>
 ): Promise<T> {
-  console.log('fetcher');
   const {
     queryKey: [url],
   } = context;

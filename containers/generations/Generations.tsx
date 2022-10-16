@@ -1,5 +1,6 @@
 import { Tab } from '@headlessui/react';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import { ResourceList } from '../../types/resourceList';
 import { fetcher } from '../../utils/fetcher';
 import Generation from './Generation';
@@ -9,6 +10,24 @@ function classNames(...classes: string[]) {
 }
 
 function Generations() {
+  const [isLaptop, setIsLaptop] = useState(true);
+
+  useEffect(() => {
+    const mql = window.matchMedia('(min-width: 1280px)');
+
+    setIsLaptop(mql.matches);
+
+    const handler = (evt: MediaQueryListEvent) => {
+      setIsLaptop(evt.matches);
+    };
+
+    mql.addEventListener('change', handler);
+
+    return () => {
+      mql.removeEventListener('change', handler);
+    };
+  }, []);
+
   const { data } = useQuery(
     ['https://pokeapi.co/api/v2/generation/'],
     fetcher<ResourceList>
@@ -16,7 +35,7 @@ function Generations() {
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <Tab.Group vertical>
+      <Tab.Group vertical={!isLaptop}>
         <Tab.List className="flex flex-col gap-2 xl:flex-row xl:justify-center">
           {data?.results?.map?.((generation) => (
             <Tab
