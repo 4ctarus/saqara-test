@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './containers/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class',
   theme: {
@@ -89,8 +90,8 @@ module.exports = {
           dark: '#381E72',
         },
         'primary-container': {
-          DEFAULT: '#21005D',
-          dark: '#EADDFF',
+          DEFAULT: '#EADDFF',
+          dark: '#4F378B',
         },
         primary: {
           DEFAULT: '#6750A4',
@@ -101,12 +102,8 @@ module.exports = {
           dark: 'rgba(227, 227, 227, 0.12)',
         },
       },
-      boxShadow: {
-        1: '0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)',
-        2: '0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15)',
-        3: '0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3)',
-        4: '0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.3)',
-        5: '0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3)',
+      gridTemplateColumns: {
+        auto: 'repeat(auto-fill, minmax(fit-content, 1fr))',
       },
     },
   },

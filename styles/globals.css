@@ -8,6 +8,6 @@
   }
 
   body {
-    @apply min-h-screen bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark;
+    @apply min-h-screen overflow-y-scroll bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark;
   }
 }

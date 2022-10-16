@@ -1,13 +1,13 @@
-import { Ressource } from './ressource';
+import { Resource } from './ressource';
 
 export type Generation = {
   id: string;
   name: string;
-  abilities: Ressource[];
-  names: { name: string; language: Ressource };
-  main_region: Ressource;
-  moves: Ressource[];
-  pokemon_species: Ressource[];
-  types: Ressource[];
-  version_groups: Ressource[];
+  abilities: Resource[];
+  names: { name: string; language: Resource };
+  main_region: Resource;
+  moves: Resource[];
+  pokemon_species: Resource[];
+  types: Resource[];
+  version_groups: Resource[];
 };
