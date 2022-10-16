@@ -1,4 +1,4 @@
-import { Resource } from './ressource';
+import { Resource } from './resource';
 
 export type Generation = {
   id: string;
