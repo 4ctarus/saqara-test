@@ -1,7 +1,3 @@
-@import url(tokens.css);
-@import url(theme.light.css) (prefers-color-scheme: light);
-@import url(theme.dark.css) (prefers-color-scheme: dark);
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,34 +8,6 @@
   }
 
   body {
-    min-height: 100vh;
-    background-color: var(--md-sys-color-background);
-    color: var(--md-sys-color-on-background);
-  }
-}
-
-@layer components {
-  .bg-surface-1 {
-    background: var(--md-sys-color-surface-1);
-  }
-
-  .bg-surface-2 {
-    background: var(--md-sys-color-surface-2);
-  }
-
-  .bg-surface-3 {
-    background: var(--md-sys-color-surface-3);
-  }
-
-  .bg-surface-4 {
-    background: var(--md-sys-color-surface-4);
-  }
-
-  .bg-surface-5 {
-    background: var(--md-sys-color-surface-5);
-  }
-
-  .bg-none {
-    background: none;
+    @apply min-h-screen bg-surface text-on-surface dark:bg-surface-dark dark:text-on-surface-dark;
   }
 }

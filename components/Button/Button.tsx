@@ -1,44 +1,62 @@
-import {
-  ButtonHTMLAttributes,
-  cloneElement,
-  isValidElement,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { IconBaseProps } from 'react-icons/lib';
-import ButtonContent from './ButtonContent';
+import ButtonIcon from './ButtonIcon';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+enum ButtonVariant {
+  text = 'text',
+  filled = 'filled',
+  outlined = 'outlined',
+}
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
+  variant?: keyof typeof ButtonVariant;
   icon?: ReactElement<IconBaseProps>;
   prefixIcon?: ReactElement<IconBaseProps>;
   suffixIcon?: ReactElement<IconBaseProps>;
 }
 
-function Button(props: Props) {
-  const { children, icon, prefixIcon, suffixIcon, ...rest } = props;
+const hoverStyle =
+  'hover:before:block hover:before:absolute hover:before:inset-0 hover:before:rounded-full hover:before:bg-primary hover:before:opacity-[.08]';
+const focusStyle =
+  'focus:before:block focus:before:absolute focus:before:inset-0 focus:before:rounded-full focus:before:bg-primary focus:before:opacity-[.12]';
+const textStyle = `text-primary`;
+const filledStyle = `bg-primary text-on-primary hover:before:bg-on-primary hover:shadow-1 disabled:hover:shadow-none disabled:bg-disabled`;
+const outlinedStyle = `text-primary border border-outline focus:border-primary disabled:border-disabled`;
+
+const disabledStyle =
+  'disabled:text-on-surface disabled:before:content-none [&>*]:disabled:opacity-[.38]';
+
+function Button(props: ButtonProps) {
+  const {
+    variant = ButtonVariant.text,
+    icon,
+    prefixIcon,
+    suffixIcon,
+    children,
+    ...rest
+  } = props;
+
+  const rootClassName = `relative box-border inline-flex items-center justify-center h-10 rounded-full ${
+    icon ? 'w-10' : 'px-4'
+  } ${hoverStyle} ${focusStyle} ${disabledStyle} ${
+    variant === ButtonVariant.text ? textStyle : ''
+  } ${variant === ButtonVariant.filled ? filledStyle : ''} ${
+    variant === ButtonVariant.outlined ? outlinedStyle : ''
+  }`;
 
   return (
-    <button {...rest}>
+    <button className={rootClassName} {...rest}>
       {icon ? (
-        isValidElement(icon) &&
-        cloneElement(icon, {
-          size: '24px',
-        })
+        <ButtonIcon icon={icon} standalone />
       ) : (
-        <ButtonContent>
+        <div className="flex items-center justify-center gap-2">
           <>
-            {isValidElement(prefixIcon) &&
-              cloneElement(prefixIcon, {
-                size: '18px',
-              })}
+            {prefixIcon && <ButtonIcon icon={prefixIcon} />}
             <span className="text-label-large">{children}</span>
-            {isValidElement(suffixIcon) &&
-              cloneElement(suffixIcon, {
-                size: '18px',
-              })}
+            {suffixIcon && <ButtonIcon icon={suffixIcon} />}
           </>
-        </ButtonContent>
+        </div>
       )}
     </button>
   );

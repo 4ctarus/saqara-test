@@ -1,16 +1,21 @@
 import type { NextPage } from 'next';
-import { FaBeer } from 'react-icons/fa';
-import Button from '../components/Button';
+import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import Generation from '../containers/Generation';
+import Generations from '../containers/Generations';
+import { Ressource } from '../types/ressource';
+
+export const SelectedGenerationContext = createContext<
+  [Ressource | null, Dispatch<SetStateAction<Ressource | null>>] | null
+>(null);
 
 const Home: NextPage = () => {
+  const selectedGeneration = useState<Ressource | null>(null);
+
   return (
-    <>
-      <h1 className="text-display">Hello world!</h1>
-      <Button>tyzevfzeyuvf</Button>
-      <Button prefixIcon={<FaBeer />}>tyzevfzeyuvf</Button>
-      <Button suffixIcon={<FaBeer />}>tyzevfzeyuvf</Button>
-      <Button icon={<FaBeer />} />
-    </>
+    <SelectedGenerationContext.Provider value={selectedGeneration}>
+      <Generations />
+      <Generation />
+    </SelectedGenerationContext.Provider>
   );
 };
 
